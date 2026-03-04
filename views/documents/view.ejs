@@ -1,0 +1,48 @@
+<%- include('../partials/header', { pageTitle: doc.title }) %>
+
+<div class="max-w-4xl mx-auto fade-in">
+  <div class="flex items-center justify-between mb-6">
+    <div class="flex items-center gap-3">
+      <a href="/documents" class="text-gray-400 hover:text-gray-600 transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </a>
+      <span class="text-gray-400 text-sm">返回文档列表</span>
+    </div>
+    <div class="flex gap-2">
+      <a href="/documents/<%= doc.id %>/edit"
+        class="bg-blue-50 text-blue-600 border border-blue-200 px-4 py-2 rounded-xl text-sm font-medium hover:bg-blue-100 transition flex items-center gap-1">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+        </svg>
+        编辑
+      </a>
+      <form action="/documents/<%= doc.id %>/delete" method="POST"
+        onsubmit="return confirm('确定要删除这篇文档吗？')">
+        <button type="submit"
+          class="bg-red-50 text-red-500 border border-red-200 px-4 py-2 rounded-xl text-sm font-medium hover:bg-red-100 transition flex items-center gap-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+          </svg>
+          删除
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-2xl shadow-sm p-8">
+    <h1 class="text-3xl font-bold text-gray-800 mb-3"><%= doc.title %></h1>
+    <p class="text-gray-400 text-sm mb-8 pb-6 border-b border-gray-100">
+      创建于 <%= new Date(doc.created_at).toLocaleDateString('zh-CN') %>
+      <% if (doc.updated_at !== doc.created_at) { %>
+        · 更新于 <%= new Date(doc.updated_at).toLocaleDateString('zh-CN') %>
+      <% } %>
+    </p>
+    <div class="doc-content prose max-w-none text-gray-700 leading-relaxed">
+      <%- doc.content || '<p class="text-gray-400">暂无内容</p>' %>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

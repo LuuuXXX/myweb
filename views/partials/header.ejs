@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= typeof pageTitle !== 'undefined' ? pageTitle + ' - ' : '' %>文档管理系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-purple-700 to-blue-500 shadow-lg">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="/" class="text-white text-2xl font-bold tracking-wide flex items-center gap-2">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+        </svg>
+        文档管理系统
+      </a>
+      <nav class="flex items-center gap-4">
+        <% if (locals.userId) { %>
+          <span class="text-purple-100 text-sm">👤 <%= locals.username %></span>
+          <a href="/documents" class="text-white hover:text-purple-200 transition text-sm font-medium">我的文档</a>
+          <a href="/auth/logout" class="bg-white text-purple-700 px-4 py-1.5 rounded-full text-sm font-semibold hover:bg-purple-50 transition">退出登录</a>
+        <% } else { %>
+          <a href="/auth/login" class="text-white hover:text-purple-200 transition text-sm font-medium">登录</a>
+          <a href="/auth/register" class="bg-white text-purple-700 px-4 py-1.5 rounded-full text-sm font-semibold hover:bg-purple-50 transition">免费注册</a>
+        <% } %>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Flash Message -->
+  <% if (typeof flash !== 'undefined' && flash) { %>
+  <div class="max-w-6xl mx-auto px-4 pt-4 w-full">
+    <div class="px-4 py-3 rounded-lg text-sm font-medium fade-in
+      <%= flash.type === 'success' ? 'bg-green-100 text-green-800 border border-green-200' : 'bg-red-100 text-red-800 border border-red-200' %>">
+      <%= flash.message %>
+    </div>
+  </div>
+  <% } %>
+
+  <main class="flex-1 max-w-6xl mx-auto px-4 py-8 w-full">
