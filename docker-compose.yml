@@ -1,0 +1,30 @@
+services:
+  web:
+    build: .
+    # 或者使用预构建镜像（如已推送到镜像仓库）：
+    # image: your-registry/myweb:latest
+    container_name: myweb
+    restart: unless-stopped
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      # 生产环境必须设置 SESSION_SECRET，否则容器将拒绝启动
+      - SESSION_SECRET=${SESSION_SECRET:?请在 .env 文件中设置 SESSION_SECRET 环境变量}
+    volumes:
+      # 持久化数据库和上传文件
+      - myweb_data:/app/data
+      - myweb_uploads:/app/public/uploads
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  myweb_data:
+    driver: local
+  myweb_uploads:
+    driver: local
