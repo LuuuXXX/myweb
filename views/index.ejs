@@ -1,0 +1,58 @@
+<%- include('partials/header', { pageTitle: '首页' }) %>
+
+<!-- Hero Section -->
+<div class="text-center py-20 fade-in">
+  <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-purple-600 to-blue-500 rounded-2xl shadow-lg mb-6">
+    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+    </svg>
+  </div>
+  <h1 class="text-5xl font-bold text-gray-800 mb-4">文档管理系统</h1>
+  <p class="text-xl text-gray-500 mb-8 max-w-xl mx-auto">
+    简单、高效、安全地管理您的文档。支持富文本编辑、图片和视频上传，随时随地访问您的内容。
+  </p>
+  <div class="flex gap-4 justify-center">
+    <a href="/auth/register"
+      class="bg-gradient-to-r from-purple-600 to-blue-500 text-white px-8 py-3 rounded-full font-semibold text-lg hover:shadow-lg hover:scale-105 transition-all duration-200">
+      立即开始
+    </a>
+    <a href="/auth/login"
+      class="bg-white text-purple-600 border-2 border-purple-600 px-8 py-3 rounded-full font-semibold text-lg hover:bg-purple-50 transition-all duration-200">
+      登录账号
+    </a>
+  </div>
+</div>
+
+<!-- Features -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+  <div class="bg-white rounded-2xl shadow-sm p-6 hover:shadow-md transition-shadow duration-200 text-center">
+    <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+      <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+      </svg>
+    </div>
+    <h3 class="text-lg font-semibold text-gray-800 mb-2">富文本编辑</h3>
+    <p class="text-gray-500 text-sm">使用强大的 Quill 编辑器，支持格式化文本、列表、标题等多种格式</p>
+  </div>
+  <div class="bg-white rounded-2xl shadow-sm p-6 hover:shadow-md transition-shadow duration-200 text-center">
+    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+      <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+      </svg>
+    </div>
+    <h3 class="text-lg font-semibold text-gray-800 mb-2">媒体上传</h3>
+    <p class="text-gray-500 text-sm">支持图片和视频上传，让您的文档更加生动丰富</p>
+  </div>
+  <div class="bg-white rounded-2xl shadow-sm p-6 hover:shadow-md transition-shadow duration-200 text-center">
+    <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+      <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+      </svg>
+    </div>
+    <h3 class="text-lg font-semibold text-gray-800 mb-2">安全可靠</h3>
+    <p class="text-gray-500 text-sm">用户数据加密存储，每位用户的文档独立隔离，安全有保障</p>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
