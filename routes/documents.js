@@ -94,12 +94,12 @@ router.post('/:id/delete', (req, res) => {
 });
 
 router.post('/upload/image', upload.single('image'), (req, res) => {
-  if (!req.file) return res.status(400).json({ error: '上传失败' });
+  if (!req.file) return res.status(400).json({ error: '未选择图片文件或文件类型不支持' });
   res.json({ url: `/uploads/${req.file.filename}` });
 });
 
 router.post('/upload/video', upload.single('video'), (req, res) => {
-  if (!req.file) return res.status(400).json({ error: '上传失败' });
+  if (!req.file) return res.status(400).json({ error: '未选择视频文件或文件类型不支持' });
   res.json({ url: `/uploads/${req.file.filename}` });
 });
 

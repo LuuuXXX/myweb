@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
   store: new SQLiteStore({ db: 'sessions.db', dir: dataDir }),
-  secret: 'myweb-secret-key-2024',
+  secret: process.env.SESSION_SECRET || 'myweb-secret-key-2024',
   resave: false,
   saveUninitialized: false,
   cookie: { maxAge: 7 * 24 * 60 * 60 * 1000 },
